@@ -25,8 +25,8 @@ const landingEjsPath = path.join(__dirname, '../views/landingpage.ejs');
 
 app.use(cors());
 app.use(bodyParser.json());
-app.use(morgan('combined'));
-app.use(helmet());
+// app.use(morgan('combined'));
+// app.use(helmet());
 
 const ulidgen = ulid();
 const mains = mainRoutes(ulidgen,landingEjsPath);
