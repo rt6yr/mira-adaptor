@@ -20,8 +20,8 @@ app.use(helmet());
 const ulidgen = ulid();
 
   
-const router =  mainRoutes();  
-app.use(router);  
+const mains =  mainRoutes();  
+app.use(mains);  
 
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);
