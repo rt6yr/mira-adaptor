@@ -9,7 +9,7 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-const mainRoutes = () => {
+const mainRoutes = (ulidgen) => {
   const router = express.Router();
 
   router.all("*", async (req, res) => {
