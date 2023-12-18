@@ -5,7 +5,7 @@ import helmet from 'helmet';
 import morgan from 'morgan';
 import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
-import mainRoutes from '../routes/main';
+import mainRoutes from './routes/main.js';
 
 dotenv.config();
 
@@ -20,7 +20,7 @@ app.use(helmet());
 const ulidgen = ulid();
 
   
-const mains =  mainRoutes();  
+const mains =  mainRoutes(ulidgen);  
 app.use(mains);  
 
 app.listen(PORT, () => {
