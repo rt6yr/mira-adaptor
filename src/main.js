@@ -9,7 +9,7 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-const setupRoutes = () => {
+const mainRoutes = () => {
   const router = express.Router();
 
   router.all("*", async (req, res) => {
@@ -39,4 +39,4 @@ const setupRoutes = () => {
   return router;
 };
 
-export default setupRoutes;
+export default mainRoutes;
