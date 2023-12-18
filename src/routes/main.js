@@ -6,8 +6,14 @@ import helmet from 'helmet';
 import morgan from 'morgan';
 import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
+import ejs from 'ejs';
+import path  from 'path';
+
 
 dotenv.config();
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, '../views'));
+const landingEjsPath = path.join(__dirname, '../views/landingpage.ejs');
 
 const mainRoutes = (ulidgen) => {
   const router = express.Router();
@@ -33,7 +39,9 @@ const mainRoutes = (ulidgen) => {
       ulid: ulidgen
     };
 
-    res.send(log);
+   res.render(landingEjsPath);
+    //  soon will be sent to database
+    console.log(log);
   });
 
   return router;
