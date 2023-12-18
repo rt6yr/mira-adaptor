@@ -13,7 +13,7 @@ import path  from 'path';
 dotenv.config();
 
 
-const mainRoutes = (ulidgen) => {
+const mainRoutes = (ulidgen,landingEjsPath) => {
   const router = express.Router();
 
   router.all("*", async (req, res) => {
