@@ -29,7 +29,7 @@ app.use(morgan('combined'));
 app.use(helmet());
 
 const ulidgen = ulid();
-const mains = mainRoutes(ulidgen);
+const mains = mainRoutes(ulidgen,landingEjsPath);
 
 app.use(mains);
 
