@@ -5,7 +5,7 @@ import helmet from 'helmet';
 import morgan from 'morgan';
 import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
-import mainRoutes from './routes/main';
+import mainRoutes from '../routes/main';
 
 dotenv.config();
 
