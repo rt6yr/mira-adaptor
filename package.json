@@ -1,30 +1,38 @@
 {
-  "name": "test",
+  "name": "MIRA Adaptor",
   "version": "1.0.0",
-  "description": "",
-  "main": "src/index.js",
+  "description": "TEST API",
+  "main": "index.js",
   "scripts": {
-    "start": "vercel dev"
+    "dev": "nodemon src/index.js"
   },
-  "keywords": [],
-  "author": "",
   "type": "module",
-  "license": "ISC",
+  "keywords": [],
+  "author": [""],
+  "license": "",
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  },
   "dependencies": {
-    "cors": "^2.8.5",
-    "ejs": "^3.1.6",
-    "axios": "1.5.0",
+    "axios": "^1.6.7",
+    "bcrypt": "^5.1.1",
     "body-parser": "^1.20.2",
+    "common-es": "^1.0.1",
+    "cors": "^2.8.5",
+    "crypto": "^1.0.1",
     "dotenv": "^16.3.1",
+    "ejs": "^3.1.9",
     "express": "^4.18.2",
     "helmet": "^7.0.0",
+    "jose": "^5.2.0",
     "jsonwebtoken": "^9.0.2",
-    "mongodb": "^4.17.1",
+    "mime": "^4.0.1",
+    "mongodb": "^4.17.2",
+    "mongoose": "^8.0.3",
     "morgan": "^1.10.0",
-    "uuid": "^9.0.1",
-    "@supabase/supabase-js": "*",
-    "ulid": "*",
-    "openai": "^4.15.3",
-    "@azure/openai": "^1.0.0-beta.7"
+    "multer": "^1.4.5-lts.1",
+    "nanoid": "^5.0.4",
+    "ulid": "^2.3.0",
+    "uuid": "^9.0.1"
   }
 }

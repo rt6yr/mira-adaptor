@@ -1,38 +1,38 @@
-import express from 'express';
-import cors from 'cors';
-import { ulid } from 'ulid';
-import helmet from 'helmet';
-import morgan from 'morgan';
-import bodyParser from 'body-parser';
-import dotenv from 'dotenv';
-import ejs from 'ejs';
-import { fileURLToPath } from 'url';
-import path from 'path';
-import mainRoutes from './routes/main.js';
-
-dotenv.config();
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-const app = express();
-const PORT = process.env.PORT || 3000;
-
-app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, '../views'));
-
-const landingEjsPath = path.join(__dirname, '../views/landingpage.ejs');
-
-app.use(cors());
-app.use(bodyParser.json());
-// app.use(morgan('combined'));
-// app.use(helmet());
-
-const ulidgen = ulid();
-const mains = mainRoutes(ulidgen,landingEjsPath);
-
-app.use(mains);
-
-app.listen(PORT, () => {
-  console.log(`Server listening on port ${PORT}`);
-});
+import express from 'express';  
+import cors from 'cors';  
+import path from 'path';     
+import { fileURLToPath } from 'url';    
+import { dirname } from 'path';    
+       
+import fs from 'fs';   
+const __filename = fileURLToPath(import.meta.url);    
+const dirPath = dirname(__filename);    
+import { PORT, company_name } from './config.js';  
+import mockdataRouter from './mockdata.js';  
+import ejsHandler from './ejsHandler.js';  
+const app = express();  
+  
+app.use(express.json({ limit: '1mb' })); // Parse JSON bodies  
+app.use(express.urlencoded({ limit: '1mb', extended: true })); // Parse URL-encoded bodies  
+   
+app.set('views',path.join(dirPath, 'views'));  
+app.set('view engine', 'ejs');  
+  
+app.use('/', mockdataRouter);  
+app.get('/', ejsHandler);  
+  
+app.post("/", (req, res) => {  
+  console.log("POST request received");  
+  let data = {};  
+  data["POST"] = req.body;  
+  data["company_name"] = company_name; // Access config variable  
+  res.json(data); // Send JSON response  
+});  
+  
+app.listen(PORT, () => {  
+  console.log(`API is listening on port ${PORT}`);  
+})  
+.on('error', (err) => {  
+  console.error(`Error starting server: ${err}`);  
+  process.exit(1); // Optionally exit with an error code  
+});  
