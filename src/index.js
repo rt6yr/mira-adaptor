@@ -11,7 +11,8 @@ import { PORT, company_name } from './config.js';
 import mockdataRouter from './mockdata.js';  
 import ejsHandler from './ejsHandler.js';  
 const app = express();  
-  
+  // Use CORS middleware  
+app.use(cors());  
 app.use(express.json({ limit: '1mb' })); // Parse JSON bodies  
 app.use(express.urlencoded({ limit: '1mb', extended: true })); // Parse URL-encoded bodies  
    
